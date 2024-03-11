@@ -1,31 +1,36 @@
 
-# Python 3 (python)
 
-Develop Python 3 applications.
+# Python Dev Container
 
-## Options
+## Prebuilding
 
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
-| imageVariant | Python version (use -bookworm, or -bullseye variants on local arm64/Apple Silicon): | string | 3.12-bullseye |
+Prebuilding the container will result in much faster start-up times
+for the container. 
 
-This template references an image that was [pre-built](https://containers.dev/implementors/reference/#prebuilding) to automatically include needed devcontainer.json metadata.
-
-* **Image**: mcr.microsoft.com/devcontainers/python ([source](https://github.com/devcontainers/images/tree/main/src/python))
-* **Applies devcontainer.json contents from image**: Yes ([source](https://github.com/devcontainers/images/blob/main/src/python/.devcontainer/devcontainer.json))
-
-## Installing or updating Python utilities
-
-This container installs all Python development utilities using [pipx](https://pipxproject.github.io/pipx/) to avoid impacting the global Python environment. You can use this same utility add additional utilities in an isolated environment. For example:
+* Get an access token from the [jointheleague-it](https://github.com/jointheleague-it) account, with the
+  package permissions. [See this guide for details. ](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
+* Store the token for future use, here is it ``GITHUB_TOKEN`` but it can be any env var.
+* Login to the GH Container Registry: ``echo $GITHUB_TOKEN | docker login ghcr.io -u jointheleague-it  --password-stdin``
+* Read the brief [guide to prebuilding](https://containers.dev/implementors/reference). Be sure to install the decvontainer program with npm. 
+* Build the container
+* Push it to container registry. 
 
 ```bash
-pipx install prospector
+
+# Install
+npm install -g @devcontainers/cli
+
+# Go to the workspace. 
+cd <workspace, with a .devcontainer>
+
+# Build
+devcontainer build --workspace-folder . --image-name ghcr.io/league-infrastructure/jtlpython:latest
+
+#Login to container registry
+echo $GITHUB_TOKEN | docker login ghcr.io -u jointheleague-it  --password-stdin
+
+# Push
+docker push ghcr.io/league-infrastructure/jtlpython:latest
 ```
 
-See the [pipx documentation](https://pipxproject.github.io/pipx/docs/) for additional information.
-
-
-
----
-
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/devcontainers/templates/blob/main/src/python/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+The package will be in the packages tab of the [League-Infrastructure](https://github.com/league-infrastructure) repo, https://github.com/orgs/league-infrastructure/packages
