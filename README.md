@@ -2,6 +2,10 @@
 
 # Python Dev Container
 
+This repo is the base for the League's Python environment for devcontainers. You can use this as the base for 
+new repos, but generally it is better to use the config `.devcontainer/devcontainer-base.json`, 
+which uses the prebuild image from this repo. 
+
 ## Prebuilding
 
 Prebuilding the container will result in much faster start-up times

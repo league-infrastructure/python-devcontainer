@@ -12,11 +12,6 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
 # copy dependency sync script for session and package management
 COPY ./.devcontainer/sync_deps.py /workspaces/session/post-start/
 
-# [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
-# COPY requirements.txt /tmp/pip-tmp/
-# RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
-#    && rm -rf /tmp/pip-tmp
-
 # copy requirements list into layer of dev image
 COPY requirements.txt /workspaces/session/
 RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/session/requirements.txt
