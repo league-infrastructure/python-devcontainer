@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+ARG VNC_RESOLUTION=600x600x16
 
 # [Optional] Allow the vscode user to pip install globally w/o sudo
 # ENV PIP_TARGET=/usr/local/pip-global
