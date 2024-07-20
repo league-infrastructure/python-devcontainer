@@ -28,13 +28,13 @@ npm install -g @devcontainers/cli
 cd <workspace, with a .devcontainer>
 
 # Build
-devcontainer build --workspace-folder . --image-name ghcr.io/league-infrastructure/jtlpython:latest
+IMAGE_NAME=jtlpython:20240719
+devcontainer build --workspace-folder . --image-name ghcr.io/league-infrastructure/$IMAGE_NAME
 
 #Login to container registry
 echo $GITHUB_TOKEN | docker login ghcr.io -u jointheleague-it  --password-stdin
 
 # Push
-docker push ghcr.io/league-infrastructure/jtlpython:latest
-```
+docker push ghcr.io/league-infrastructure/$IMAGE_NAME
 
 The package will be in the packages tab of the [League-Infrastructure](https://github.com/league-infrastructure) repo, https://github.com/orgs/league-infrastructure/packages

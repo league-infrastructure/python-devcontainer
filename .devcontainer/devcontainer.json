@@ -13,7 +13,7 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": ".."
-	  },
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
